@@ -5,7 +5,7 @@ const props = defineProps({
   name: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   emailAddress: { type: String, required: true },
-  isFavorite: { type: String, required: false, default: '0', validator : function(value) {return value === '0' || value ==='1'} },
+  isFavorite: { type: String, required: false, default: false,  },
 });
 
 const detailsVisible = ref(true);

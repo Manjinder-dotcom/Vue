@@ -2,11 +2,15 @@
 import { ref } from "vue";
 
 const props = defineProps({
+  id: {type:String, required: true},
   name: { type: String, required: true },
   phoneNumber: { type: String, required: true },
   emailAddress: { type: String, required: true },
-  isFavorite: { type: String, required: false, default: false,  },
+  isFavorite: { type: Boolean, required: false, default: false,  },
 });
+
+const emit = defineEmits(['toggle-favorite'])
+
 
 const detailsVisible = ref(true);
 
@@ -17,25 +21,21 @@ const detailsVisible = ref(true);
 //   emailAddress: "Aman@gmail.com",
 // });
 
-const friendisFavorite = ref('isFavorite')
+// const friendisFavorite = ref('isFavorite')
 
 const toggleDetails = () => {
   detailsVisible.value = !detailsVisible.value;
 };
 
 const toggleFavorite = () => {
-  if(friendisFavorite.value === '1'){
-    friendisFavorite.value = '0'
-  }else {
-    friendisFavorite.value = '1'
-  }
+ emit('toggle-favorite')
 }
 </script>
 
 <template>
   <ul>
     <li>
-      <h2>{{ name }} {{friendisFavorite === '1' ? '(Favorite)' : ''}} </h2>
+      <h2>{{ name }} {{isFavorite === '1' ? '(Favorite)' : ''}} </h2>
       <button @click="toggleFavorite" >Toggle Favorite</button>
       <button @click="toggleDetails()">
         {{ detailsVisible ? "Hide" : "Show" }} Details

@@ -4,5 +4,5 @@
 
 <template>
   
- <h1>Parent Component</h1>
+ <h1>Parent Component adfskafjlks</h1>
 </template>
